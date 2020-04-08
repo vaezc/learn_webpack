@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    entry:'./main.js',
+    entry:'./src/main.js',
     output: {
         filename:'bundle.js',
         path: path.resolve(__dirname,'./dist'),
@@ -18,8 +18,17 @@ module.exports = {
                             publicPath: '../'
                         }
                     },
-                    "css-loader"
+                    "css-loader",
+                    "postcss-loader"
                 ]
+            },
+            {
+                test: /\.js$/,
+                use:['babel-loader']
+            },
+            {
+                test: /\.scss/,
+                use:['style-loader','css-loader','sass-loader'],
             }
         ]
     },
@@ -28,5 +37,6 @@ module.exports = {
             filename: "[name].css",
             chunkFilename: "[id].css"
         }),
-    ]
-};
+    ],
+    devtool: 'source-map'
+};      
