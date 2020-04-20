@@ -1,13 +1,13 @@
-const path = require('path');
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require('webpack')
+const webpack = require("webpack")
 
 module.exports = {
-    mode: 'development',
-    entry:'./src/main.js',
+    mode: "development",
+    entry:"./src/main.js",
     output: {
-        filename:'bundle.js',
-        path: path.resolve(__dirname,'./dist'),
+        filename:"bundle.js",
+        path: path.resolve(__dirname,"./dist"),
     },
     module: {
         rules:[
@@ -17,7 +17,7 @@ module.exports = {
                     {
                         loader:MiniCssExtractPlugin.loader,
                         options: {
-                            publicPath: '../'
+                            publicPath: "../"
                         }
                     },
                     "css-loader",
@@ -26,11 +26,11 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use:['babel-loader']
+                use:["babel-loader"]
             },
             {
                 test: /\.scss/,
-                use:['style-loader','css-loader','sass-loader'],
+                use:["style-loader","css-loader","sass-loader"],
             }
         ]
     },
@@ -40,13 +40,13 @@ module.exports = {
             chunkFilename: "[id].css"
         }),
         new webpack.HotModuleReplacementPlugin({
-            template:'./index.html'
+            template:"./index.html"
         })
     ],
     devServer: {
-        contentBase:'./',
+        contentBase:"./",
         hot: true  
     },
-    devtool: 'source-map',
+    devtool: "source-map",
 
 };      
