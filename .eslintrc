@@ -1,11 +1,16 @@
 {
-    // 从 eslint:recommended 中继承所有检查规则
-    "extends": "eslint:recommended",
-    // 再自定义一些规则     
-    "rules": {
-        // 需要在每行结尾加 ;        
-        "semi": ["error", "always"],
-        // 需要使用 "" 包裹字符串         
-        "quotes": ["error", "double"]
-    }
+  // 从 eslint:recommended 中继承所有检查规则
+  "env": { "browser": true, "node": true,"es6": true  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  // 再自定义一些规则
+  "rules": {
+    // 需要在每行结尾加 ;
+    "semi": ["error", "always"],
+    // 需要使用 "" 包裹字符串
+    "quotes": ["error", "double"]
+  }
 }

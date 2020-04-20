@@ -1,3 +1,2 @@
-require('./main.css');
-show = require('./show.js');
-show('Webpack');
+import {show} from "./show";
+show("vae");
