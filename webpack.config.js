@@ -1,6 +1,8 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require("webpack")
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
     mode: "development",
@@ -13,6 +15,7 @@ module.exports = {
         filename:"bundle.js",
         //输出目录路径，应该是绝对路径
         path: path.resolve(__dirname,"./dist"),
+        // publicPath: "https://cdn.example.com/assets/"
     },
     module: {
         rules:[
@@ -46,10 +49,14 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin({
             template:"./index.html"
-        })
+        }),
+        new HtmlWebpackPlugin({
+            template:"./public/index.html"
+        }),
+        new CleanWebpackPlugin()
     ],
     devServer: {
-        contentBase:"./",
+        contentBase:"./dist/",
         hot: true  
     },
     devtool: "source-map",
