@@ -32,11 +32,12 @@ module.exports = {
                     },
                     "css-loader",
                     "postcss-loader"
-                ]
+                ],
             },
             {
                 test: /\.js$/,
-                use: ["babel-loader"]
+                use: ["babel-loader"],
+                include: path.resolve(__dirname, "src")
             },
             {
                 test: /\.scss/,
