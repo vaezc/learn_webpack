@@ -4,12 +4,13 @@ import {show, displayName} from "./show";
 
 import * as testExport from "./export";
 import {cube} from "./math";
+import Print from './print';
+
+
 
 console.log(cube(5));
+Print('vae');
 
-// console.log(
-//     _.join([["Main", "module", "loaded!"], " "])
-// );
 import(/*webpackChunkName: "lodash" */ "lodash").then(({default: _}) => {
     console.log(_.join(['hello','webpack','']));
 }).catch(error => {
