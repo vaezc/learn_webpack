@@ -5,14 +5,16 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
-    mode: "development",
     //入口
-    entry:"./src/main.js",
+    entry: {
+        main:"./src/main.js",
+        another: "./src/another-module.js"
+    },
     //输出
     output: {
         //输出文件名称 如果是代码拆分或者多个入口时
         //filename: "[name].[hash].bundle.js"
-        filename:"bundle.js",
+        filename:"[name].bundle.js",
         //输出目录路径，应该是绝对路径
         path: path.resolve(__dirname,"./dist"),
         // publicPath: "https://cdn.example.com/assets/"
@@ -55,10 +57,5 @@ module.exports = {
         }),
         new CleanWebpackPlugin()
     ],
-    devServer: {
-        contentBase:"./dist/",
-        hot: true  
-    },
-    devtool: "source-map",
 
 };      
